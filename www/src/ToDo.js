@@ -21,7 +21,7 @@ function ToDo({ toDos, addToDo, deleteToDo, completeToDo }) {
               <Label for="newExternalID" hidden>ToDo</Label>
               <Input type="text" name="extID" id="externalID" placeholder="test" />
             </FormGroup>
-            <Button onClick={addToDo} color="primary" className="ml-1">Connect</Button>
+            <Button onClick={addAWSAccount} color="primary" className="ml-1">Connect</Button>
           </Form>
         </Col>
         <Col xs="12" className="mt-1 mb-1">
