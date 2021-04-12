@@ -3,7 +3,7 @@ import { Button, ButtonGroup, Form, FormGroup, Input, Label, Row, Col } from 're
 
 import './ToDo.css';
 
-function ToDo({ toDos, addToDo, deleteToDo, completeToDo }) {
+function ToDo({ toDos, addAWSAccount, deleteToDo, completeToDo }) {
   const [filter, setFilter] = useState('all');
 
   const changeFilter = (newFilter) => {
