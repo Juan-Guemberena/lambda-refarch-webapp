@@ -103,7 +103,8 @@ function App() {
       clearCredentials();
     } else if (result && result.status === 200) {
       getAllTodos();
-      newToDoInput.value = '';
+      newRoleInput.value = '';
+      newExternalID.value = '';
     }
   }
 
