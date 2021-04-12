@@ -17,9 +17,9 @@ function ToDo({ toDos, addToDo, deleteToDo, completeToDo }) {
           <Form inline>
             <FormGroup>
               <Label for="newRole" hidden>ToDo</Label>
-              <Input type="text" name="todo" id="newRole" placeholder="RoleARN" />
+              <Input type="text" name="role" id="newRole" placeholder="RoleARN" />
               <Label for="newExternalID" hidden>ToDo</Label>
-              <Input type="text" name="todo" id="externalID" placeholder="test" />
+              <Input type="text" name="extID" id="externalID" placeholder="test" />
             </FormGroup>
             <Button onClick={addToDo} color="primary" className="ml-1">Connect</Button>
           </Form>

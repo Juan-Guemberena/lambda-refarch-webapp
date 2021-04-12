@@ -78,7 +78,7 @@ function App() {
   };
 
   const addAWSAccount = async (event) => {
-    const newToDoInput = document.getElementById('newAccount');
+    const newToDoInput = document.getElementById('newRole');
     const item = newToDoInput.value;
     console.log(item);
     if (!item || item === '') return;
@@ -94,7 +94,7 @@ function App() {
       headers: {
         Authorization: idToken
       },
-      data: newToDo
+      data: newAccount
     });
 
     if (result && result.status === 401) {
@@ -159,7 +159,7 @@ function App() {
             <Col md="6">
               {idToken.length > 0 ?
                 (
-                  <ToDo updateAlert={updateAlert} toDos={toDos} addToDo={addToDo} deleteToDo={deleteToDo} completeToDo={completeToDo} />
+                  <ToDo updateAlert={updateAlert} toDos={toDos} addAWSAccount={addAWSAccount} deleteToDo={deleteToDo} completeToDo={completeToDo} />
                 ) : (
                   <Button
                     href={`https://${config.cognito_hosted_domain}/login?response_type=token&client_id=${config.aws_user_pools_web_client_id}&redirect_uri=${config.redirect_url}`}
