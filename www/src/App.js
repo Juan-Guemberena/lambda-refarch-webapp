@@ -84,10 +84,12 @@ function App() {
     const extID = newExternalID.value;
     console.log(role);
     if (!role || role === '') return;
+    console.log(extID);
+    if (!extID || extID === '') return;
 
     const newAccount = {
       "roleARN": role,
-      "external-id": 'test'
+      "external-id": extID
     };
 
     const result = await axios({
