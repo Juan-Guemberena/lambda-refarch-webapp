@@ -73,7 +73,7 @@ exports.addToDoItem =
     metricScope(metrics =>
         async (event, context, callback) => {
             metrics.setNamespace('TodoApp')
-            metrics.putDimensions({ Service: "addTodo" })
+            metrics.putDimensions({ Service: "addAWSAccount" })
             metrics.setProperty("RequestId", context.requestId)
 
             if (!isValidRequest(context, event)) {
