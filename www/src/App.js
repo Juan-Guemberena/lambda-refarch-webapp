@@ -77,15 +77,15 @@ function App() {
     }
   };
 
-  const addToDo = async (event) => {
-    const newToDoInput = document.getElementById('newToDo');
+  const addAWSAccount = async (event) => {
+    const newToDoInput = document.getElementById('newAccount');
     const item = newToDoInput.value;
     console.log(item);
     if (!item || item === '') return;
 
-    const newToDo = {
-      "item": item,
-      "completed": false
+    const newAccount = {
+      "roleARN": item,
+      "external-id": 'test'
     };
 
     const result = await axios({
