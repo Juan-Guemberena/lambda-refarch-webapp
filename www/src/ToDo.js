@@ -16,9 +16,10 @@ function ToDo({ toDos, addAWSAccount, deleteToDo, completeToDo }) {
         <Col xs="12" className="mt-1 mb-1">
           <Form inline>
             <FormGroup>
-              <Label for="newRole" hidden>ToDo</Label>
+              <Label for="newRole" hidden>Role</Label>
               <Input type="text" name="role" id="newRole" placeholder="RoleARN" />
-              <Label for="newExternalID" hidden>ToDo</Label>
+              <br></br>
+              <Label for="newExternalID" hidden>ExtID</Label>
               <Input type="text" name="extID" id="externalID" placeholder="test" />
             </FormGroup>
             <Button onClick={addAWSAccount} color="primary" className="ml-1">Connect</Button>
