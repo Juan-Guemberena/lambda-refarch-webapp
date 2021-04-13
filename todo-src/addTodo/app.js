@@ -64,6 +64,7 @@ function addRecord(event) {
         TableName: TABLE_NAME,
         Item: item_body
     }
+    console.log(params);
 
     return docClient.put(params)
 }
