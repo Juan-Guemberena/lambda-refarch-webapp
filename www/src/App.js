@@ -89,7 +89,7 @@ function App() {
 
     const newAccount = {
       "roleARN": role,
-      "external-id": extID
+      "external-id": "extID"
     };
 
     const result = await axios({
