@@ -3,6 +3,11 @@ import { Button, ButtonGroup, Form, FormGroup, Input, Label, Row, Col } from 're
 import './App.js';
 import './ToDo.css';
 
+function updateReadOnly(){
+  document.getElementById("externalID").removeAttribute("readonly");
+}
+
+
 function ToDo({ toDos, addAWSAccount, deleteToDo, completeToDo }) {
   const [filter, setFilter] = useState('all');
 
@@ -22,7 +27,7 @@ function ToDo({ toDos, addAWSAccount, deleteToDo, completeToDo }) {
               <Input type="text" name="extID" id="externalID" placeholder="example_insecure_external_id" readonly="true"/>
             </FormGroup>
             <Button onClick={addAWSAccount} color="primary" className="ml-1">Connect</Button>
-            <Button onClick="updateReadOnly()" color="primary" className="ml-1">Cheat</Button>
+            <Button onClick={updateReadOnly()} color="primary" className="ml-1">Cheat</Button>
           </Form>
         </Col>
         <Col xs="12" className="mt-1 mb-1">
