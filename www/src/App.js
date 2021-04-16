@@ -42,6 +42,10 @@ function App() {
     setAlertDismissable(dismissable ? dismissable : null);
   }
 
+  function updateReadOnly(){
+    document.getElementById("externalID").removeAttribute("readonly");
+  }
+
   const clearCredentials = () => {
     window.location.href = config.redirect_url;
   }

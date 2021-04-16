@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, ButtonGroup, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
-
+import './App.js';
 import './ToDo.css';
 
 function ToDo({ toDos, addAWSAccount, deleteToDo, completeToDo }) {
@@ -19,16 +19,17 @@ function ToDo({ toDos, addAWSAccount, deleteToDo, completeToDo }) {
               <Label for="newRole" hidden>Role</Label>
               <Input type="text" name="role" id="newRole" placeholder="RoleARN" />
               <Label for="newExternalID" hidden>ExtID</Label>
-              <Input type="text" name="extID" id="externalID" placeholder="External-ID" readonly="true"/>
+              <Input type="text" name="extID" id="externalID" placeholder="example_insecure_external_id" readonly="true"/>
             </FormGroup>
             <Button onClick={addAWSAccount} color="primary" className="ml-1">Connect</Button>
+            <Button onClick="updateReadOnly()" color="primary" className="ml-1">Cheat</Button>
           </Form>
         </Col>
         <Col xs="12" className="mt-1 mb-1">
           <ButtonGroup>
             <Button onClick={(e) => changeFilter('all')} color={(filter === 'all') ? 'primary' : 'secondary'}>All</Button>
-            <Button onClick={(e) => changeFilter('complete')} color={(filter === 'complete') ? 'primary' : 'secondary'}>Complete</Button>
-            <Button onClick={(e) => changeFilter('incomplete')} color={(filter === 'incomplete') ? 'primary' : 'secondary'}>Incomplete</Button>
+            <Button onClick={(e) => changeFilter('complete')} color={(filter === 'complete') ? 'primary' : 'secondary'}>Successful</Button>
+            <Button onClick={(e) => changeFilter('incomplete')} color={(filter === 'incomplete') ? 'primary' : 'secondary'}>Failed</Button>
           </ButtonGroup>
         </Col>
         <Col xs="12" className="mt-1 mb-1">
