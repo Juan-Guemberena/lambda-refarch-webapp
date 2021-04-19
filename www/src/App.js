@@ -80,9 +80,9 @@ function App() {
   };
 
   const addAWSAccount = async (event) => {
-    const newRoleInput = document.getElementById('newRole');
+    const newRoleInput = document.getElementById("newRole");
     const role = newRoleInput.value;
-    const newExternalID = document.getElementById('newExternalID');
+    const newExternalID = document.getElementById("externalID");
     const extID = newExternalID.value;
     console.log(role);
     if (!role || role === '') return;
