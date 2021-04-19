@@ -12,13 +12,17 @@ function ToDo({ toDos, addAWSAccount, deleteToDo, completeToDo }) {
 
     if(document.getElementById("externalID").hasAttribute("readonly")){
       document.getElementById("externalID").removeAttribute("readonly");
-      return;
+      isCheating = true;
+      useState("all");
+
     }
     else{
       document.getElementById("externalID").setAttribute("readonly","true");
+      
       isCheating = false;
+      useState("all");
     }
-    isCheating = true;
+    
   }
   
   
@@ -40,7 +44,7 @@ function ToDo({ toDos, addAWSAccount, deleteToDo, completeToDo }) {
               <Input type="text" name="extID" id="externalID" placeholder="example_insecure_external_id" readonly="true"/>
             </FormGroup>
             <Button onClick={addAWSAccount} color="primary" className="ml-1">Connect</Button>
-            <Button id="cheat_button" onClick={() => {cheat_button()} } color="primary" className="ml-1">{!isCheating ? "Uncheat" : "Cheat"}</Button>
+            <Button id="cheat_button" onClick={() => {cheat_button()} } color="primary" className="ml-1">{isCheating ? "Uncheat" : "Cheat"}</Button>
           </Form>
         </Col>
         <Col xs="12" className="mt-1 mb-1">
