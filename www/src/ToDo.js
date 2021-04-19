@@ -10,10 +10,12 @@ function ToDo({ toDos, addAWSAccount, deleteToDo, completeToDo }) {
 
   function cheat_button(){
 
-    console.log(document.getElementById("externalID").removeAttribute("readonly"));
-
-    document.getElementById("externalID").removeAttribute("readonly");
-    
+    if(document.getElementById("externalID").hasAttribute("readonly")){
+      document.getElementById("externalID").removeAttribute("readonly");
+    }
+    else{
+      document.getElementById("externalID").setAttribute("readonly","true");
+    }
   
   }
   
