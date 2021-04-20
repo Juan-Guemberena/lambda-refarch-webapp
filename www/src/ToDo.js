@@ -13,14 +13,14 @@ function ToDo({ toDos, addAWSAccount, deleteToDo, completeToDo }) {
     if(document.getElementById("externalID").hasAttribute("readonly")){
       document.getElementById("externalID").removeAttribute("readonly");
       isCheating = true;
-      useState("all");
+
 
     }
     else{
       document.getElementById("externalID").setAttribute("readonly","true");
       
       isCheating = false;
-      useState("all");
+
     }
     
   }
