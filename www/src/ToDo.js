@@ -2,24 +2,24 @@ import React, { useState } from 'react';
 import { Button, ButtonGroup, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
 import './ToDo.css';
 
-var isCheating = false
+
 
 function ToDo({ toDos, addAWSAccount, deleteToDo, completeToDo }) {
   
-
+  const [isCheating,setCheating] = useState(false);
 
   function cheat_button(){
 
     if(document.getElementById("externalID").hasAttribute("readonly")){
       document.getElementById("externalID").removeAttribute("readonly");
-      isCheating = true;
+      setCheating(true);
 
 
     }
     else{
       document.getElementById("externalID").setAttribute("readonly","true");
       
-      isCheating = false;
+      setCheating(false);
 
     }
     
