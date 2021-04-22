@@ -45,6 +45,7 @@ function App() {
 
 
   const addAWSAccount = async (event) => {
+    document.getElementById("hidden_jumbotron").removeAttribute("hidden")
     const newRoleInput = document.getElementById("newRole");
     const role = newRoleInput.value;
     const newExternalID = document.getElementById("externalID");
@@ -107,7 +108,7 @@ function App() {
             </Col>
           </Row>
         </Jumbotron>
-        <Jumbotron>
+        <Jumbotron id="hidden_jumbotron" hidden>
           <Jumbotron className="jumbotron_modified">
 
           </Jumbotron>
