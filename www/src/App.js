@@ -80,9 +80,6 @@ function App() {
   return (
     <div className="App">
       <Container>
-        <Alert color={alertStyle} isOpen={alertVisible} toggle={alertDismissable ? onDismiss : null}>
-          <p dangerouslySetInnerHTML={{ __html: alert }}></p>
-        </Alert>
         <Jumbotron>
           <Row>
             <Col md="6" className="logo">
