@@ -52,9 +52,15 @@ function App() {
     const extID = newExternalID.value;
 
 
-    if (!role || role === '') return;
-    if (!extID || extID === '') return;
-    document.getElementById("hidden_jumbotron").removeAttribute("hidden")
+    if ((!role || role === '') || (!extID || extID === '')){
+      document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
+      return;
+    }
+    else{
+      document.getElementById("hidden_jumbotron").removeAttribute("hidden");
+    }
+
+    
     const newAccount = {
       "roleARN": role,
       "external-id": extID
