@@ -6,6 +6,7 @@ import './ToDo.css';
 
 function ToDo({  addAWSAccount }) {
   
+  const [showHover,setHover] = useState(false);
   const [isCheating,setCheating] = useState(false);
 
   function cheat_button(){
@@ -39,8 +40,8 @@ function ToDo({  addAWSAccount }) {
               <Input type="text" name="extID" id="externalID" placeholder="example_insecure_external_id" readonly="true"/>
             </FormGroup>
             <Button onClick={addAWSAccount} color="primary" className="ml-1">Connect</Button>
-            <Button id="cheat_button" onClick={() => {cheat_button()} } color="primary" className="ml-1">{isCheating ? "Uncheat" : "Cheat"}</Button>
-            <Fade in={isCheating}><div id="cheat_text">Although not editable in the UI, many implementations do not prevent the user from intercepting and modifying the value.  Simulate by unlocking.</div></Fade>
+            <Button id="cheat_button" onClick={() => {cheat_button()} } onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} color="primary" className="ml-1">{isCheating ? "Uncheat" : "Cheat"}</Button>
+            {showHover && (<div id="cheat_text">Although not editable in the UI, many implementations do not prevent the user from intercepting and modifying the value.  Simulate by unlocking.</div>)}
           </Form>
         </Col>
        
