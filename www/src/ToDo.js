@@ -36,7 +36,7 @@ function ToDo({  addAWSAccount }) {
               <Input type="text" name="extID" id="externalID" placeholder="example_insecure_external_id" readonly="true"/>
             </FormGroup>
             <Button onClick={addAWSAccount} color="primary" className="ml-1">Connect</Button>
-            <Button id="cheat_button" onClick={cheat_button()} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} color="primary" className="ml-1">{isCheating ? "Uncheat" : "Cheat"}</Button>
+            <Button id="cheat_button" onClick={() => {cheat_button()} } onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} color="primary" className="ml-1">{isCheating ? "Uncheat" : "Cheat"}</Button>
             {showHover && (<div className="hoverText" id="cheat_text">Although not editable in the UI, many implementations do not prevent the user from intercepting and modifying the value.  Simulate by "cheating".</div>)}
           </Form>
         </Col>
