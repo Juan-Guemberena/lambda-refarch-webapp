@@ -107,6 +107,11 @@ function App() {
             </Col>
           </Row>
         </Jumbotron>
+        <Jumbotron>
+          <Jumbotron className="jumbotron_modified">
+
+          </Jumbotron>
+        </Jumbotron>
       </Container>
     </div >
   );
