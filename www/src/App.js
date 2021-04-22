@@ -92,7 +92,7 @@ function App() {
             <Col md="6">
               {idToken.length > 0 ?
                 (
-                  <ToDo updateAlert={updateAlert} addAWSAccount={addAWSAccount} />
+                  <ToDo addAWSAccount={addAWSAccount} />
                 ) : (
                   <Button
                     href={`https://${config.cognito_hosted_domain}/login?response_type=token&client_id=${config.aws_user_pools_web_client_id}&redirect_uri=${config.redirect_url}`}
