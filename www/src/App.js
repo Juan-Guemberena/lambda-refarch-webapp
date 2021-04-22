@@ -45,16 +45,16 @@ function App() {
 
 
   const addAWSAccount = async (event) => {
-    document.getElementById("hidden_jumbotron").removeAttribute("hidden")
+
     const newRoleInput = document.getElementById("newRole");
     const role = newRoleInput.value;
     const newExternalID = document.getElementById("externalID");
     const extID = newExternalID.value;
-    console.log(role);
-    if (!role || role === '') return;
-    console.log(extID);
-    if (!extID || extID === '') return;
 
+
+    if (!role || role === '') return;
+    if (!extID || extID === '') return;
+    document.getElementById("hidden_jumbotron").removeAttribute("hidden")
     const newAccount = {
       "roleARN": role,
       "external-id": extID
