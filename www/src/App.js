@@ -19,6 +19,7 @@ function App() {
 
   axios.interceptors.response.use(response => {
     console.log('Response was received');
+    console.log(response)
     return response;
   }, error => {
     window.location.href = config.redirect_url;
