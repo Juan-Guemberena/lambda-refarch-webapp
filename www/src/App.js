@@ -9,7 +9,39 @@ import logo from './aws.png';
 import config from './config';
 
 function App() {
-  
+
+  const [idToken, setIdToken] = useState('');
+
+  useEffect(() => {
+    getIdToken();
+
+  }, [idToken]);
+
+  axios.interceptors.response.use(response => {
+    console.log('Response was received');
+    return response;
+  }, error => {
+    window.location.href = config.redirect_url;
+    return Promise.reject(error);
+  });
+
+
+  const clearCredentials = () => {
+    window.location.href = config.redirect_url;
+  }
+
+  const getIdToken = () => {
+    const hash = window.location.hash.substr(1);
+    const objects = hash.split("&");
+    objects.forEach(object => {
+      const keyVal = object.split("=");
+      if (keyVal[0] === "id_token") {
+        setIdToken(keyVal[1]);
+      }
+    });
+  };
+
+
 
   const addAWSAccount = async (event) => {
     const newRoleInput = document.getElementById("newRole");
@@ -36,7 +68,9 @@ function App() {
     });
 
     if (result && result.status === 401) {
+      clearCredentials();
     } else if (result && result.status === 200) {
+      
       newRoleInput.value = '';
       newExternalID.value = '';
     }
@@ -46,6 +80,9 @@ function App() {
   return (
     <div className="App">
       <Container>
+        <Alert color={alertStyle} isOpen={alertVisible} toggle={alertDismissable ? onDismiss : null}>
+          <p dangerouslySetInnerHTML={{ __html: alert }}></p>
+        </Alert>
         <Jumbotron>
           <Row>
             <Col md="6" className="logo">
@@ -58,7 +95,7 @@ function App() {
             <Col md="6">
               {idToken.length > 0 ?
                 (
-                  <ToDo addAWSAccount={addAWSAccount} />
+                  <ToDo updateAlert={updateAlert} addAWSAccount={addAWSAccount} />
                 ) : (
                   <Button
                     href={`https://${config.cognito_hosted_domain}/login?response_type=token&client_id=${config.aws_user_pools_web_client_id}&redirect_uri=${config.redirect_url}`}
