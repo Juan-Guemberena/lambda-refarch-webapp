@@ -68,7 +68,7 @@ function App() {
 
     const result = await axios({
       method: 'POST',
-      url: `${config.api_base_url}/item/`,
+      url: `${config.api_base_url}/`,
       headers: {
         Authorization: idToken
       },
