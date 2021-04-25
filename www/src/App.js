@@ -77,7 +77,7 @@ function App() {
       data: newAccount
     });
     console.log(result)
-
+    console.log(result.status)
 
     if (result && result.status === 401) {
       clearCredentials();
