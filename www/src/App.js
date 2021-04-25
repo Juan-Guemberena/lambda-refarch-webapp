@@ -68,9 +68,7 @@ function App() {
 
 
 
-    const axios = require('axios');
-    axios.post('https://054x4dskg8.execute-api.us-east-1.amazonaws.com/dev/',{headers:{Authorization:idToken},data:newAccount});
-    /*const result = await axios({
+    const result = await axios({
       method: 'POST',
       url: `${config.api_base_url}/`,
       headers: {
@@ -78,17 +76,16 @@ function App() {
       },
       data: newAccount
     });
-    console.log(result)*/
+    console.log(result)
 
 
-/*
     if (result && result.status === 401) {
       clearCredentials();
     } else if (result && result.status === 200) {
       
       newRoleInput.value = '';
       newExternalID.value = '';
-    }*/
+    }
   }
 
 
