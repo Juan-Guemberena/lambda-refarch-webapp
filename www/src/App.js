@@ -59,10 +59,13 @@ function App() {
     };
 
 
-
-    const result = await axios({
+    const axios = require('axios');
+    const result = axios.post('https://054x4dskg8.execute-api.us-east-1.amazonaws.com/dev/',{headers:{Authorization:idToken},data:newAccount});
+    console.log(result);
+    console.log(result.status);
+    /*const result = await axios({
       method: 'POST',
-      url: `${config.api_base_url}/`,
+      url: `${config.api_base_url}`,
       headers: {
         Authorization: idToken
       },
@@ -77,7 +80,7 @@ function App() {
     } else if (result && result.status === 200) {
       newRoleInput.value = '';
       newExternalID.value = '';
-    }
+    }*/
   }
 
 
