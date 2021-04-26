@@ -17,14 +17,6 @@ function App() {
 
   }, [idToken]);
 
-  axios.interceptors.response.use(response => {
-    console.log('Response was received');
-    console.log(response)
-    return response;
-  }, error => {
-    window.location.href = config.redirect_url;
-    return Promise.reject(error);
-  });
 
 
   const clearCredentials = () => {
