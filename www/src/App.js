@@ -63,9 +63,6 @@ function App() {
     const result = await axios({
       method: 'POST',
       url: `${config.api_base_url}`,
-      headers: {
-        Authorization: idToken
-      },
       data: newAccount
     });
     console.log(result)
@@ -73,7 +70,7 @@ function App() {
 
     if (result && result.status === 401) {
       console.log('fail')
-      // clearCredentials();
+      clearCredentials();
     } else if (result && result.status === 200) {
       newRoleInput.value = '';
       newExternalID.value = '';
