@@ -58,9 +58,9 @@ function App() {
       "external-id": extID
     };
 
-
+    axios.defaults.headers.post['Authorization'] = idToken
     const axios = require('axios');
-    axios.post('https://054x4dskg8.execute-api.us-east-1.amazonaws.com/dev/',{headers:{Authorization:idToken},data:newAccount})
+    axios.post('https://054x4dskg8.execute-api.us-east-1.amazonaws.com/dev/',{data:newAccount})
     .catch (function (error) {
       console.log(error.response.data);
       console.log(error.response.status);
