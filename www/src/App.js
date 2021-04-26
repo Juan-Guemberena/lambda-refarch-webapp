@@ -60,7 +60,7 @@ function App() {
 
 
     const axios = require('axios');
-    const result = axios.post('https://054x4dskg8.execute-api.us-east-1.amazonaws.com/dev/',{headers:{Authorization:idToken},data:newAccount});
+    const result = await axios.post('https://054x4dskg8.execute-api.us-east-1.amazonaws.com/dev/',{headers:{Authorization:idToken},data:newAccount});
     console.log(result);
     console.log(result.status);
     /*const result = await axios({
