@@ -60,9 +60,15 @@ function App() {
 
 
     const axios = require('axios');
-    const result = await axios.post('https://054x4dskg8.execute-api.us-east-1.amazonaws.com/dev/',{headers:{Authorization:idToken},data:newAccount});
-    console.log(result);
-    console.log(result.status);
+    axios.post('https://054x4dskg8.execute-api.us-east-1.amazonaws.com/dev/',{headers:{Authorization:idToken},data:newAccount})
+    .catch (function (error) {
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+      console.log(error.request);
+      console.log(error.message);
+    });
+
     /*const result = await axios({
       method: 'POST',
       url: `${config.api_base_url}`,
