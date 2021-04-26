@@ -72,9 +72,9 @@ function App() {
     console.log(result.status)
 
     if (result && result.status === 401) {
-      clearCredentials();
+      console.log('fail')
+      // clearCredentials();
     } else if (result && result.status === 200) {
-      
       newRoleInput.value = '';
       newExternalID.value = '';
     }
