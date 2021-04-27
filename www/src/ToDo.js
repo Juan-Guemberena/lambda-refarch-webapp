@@ -40,8 +40,9 @@ function ExternalAttack({  addAWSAccount }) {
           </Form>
         </Col>      
       </Row>
+      <br></br>
       <Row>
-      <Button color="primary" className="ml-1">Basic Attack</Button>
+      <Button style={{float: 'right'}} color="primary" className="ml-1">Basic Attack</Button>
       </Row>
     </div >
   );
