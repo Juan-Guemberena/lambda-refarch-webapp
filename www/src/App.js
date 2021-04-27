@@ -46,7 +46,7 @@ function App() {
     const extID = newExternalID.value;
     setRole(newRoleInput.value);
     setExtID(newExternalID.value);
-    
+
     if ((!role || role === '') || (!extID || extID === '')){
       document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
       return;
@@ -112,6 +112,7 @@ function App() {
         <Jumbotron id="hidden_jumbotron" hidden>
           <Jumbotron className="jumbotron_modified">
               <p className="jumbotron_text">Executing command...</p><p className="jumbotron_text">aws sts assume-role --role-arn {role} --external-id {extID} --role-session-name hacking</p>
+              <p className="jumbotron_text"></p>
           </Jumbotron>
         </Jumbotron>
       </Container>
