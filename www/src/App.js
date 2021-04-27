@@ -44,7 +44,8 @@ function App() {
     setRole(newRoleInput.value);
     const newExternalID = document.getElementById("externalID");
     setExtID(newExternalID.value);
-
+    console.log(role)
+    console.log(extID)
 
     if ((!role || role === '') || (!extID || extID === '')){
       console.log('this is happening')
