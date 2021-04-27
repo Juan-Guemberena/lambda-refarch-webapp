@@ -41,11 +41,9 @@ function App() {
   const addAWSAccount = async (event) => {
 
     const newRoleInput = document.getElementById("newRole");
-    setRole(newRoleInput.value);
+    await setRole(newRoleInput.value);
     const newExternalID = document.getElementById("externalID");
-    setExtID(newExternalID.value);
-    console.log(role)
-    console.log(extID)
+    await setExtID(newExternalID.value);
 
     if ((!role || role === '') || (!extID || extID === '')){
       console.log('this is happening')
