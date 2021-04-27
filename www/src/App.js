@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Jumbotron, Row, Col, Button } from 'reactstrap';
 import axios from 'axios';
-import ToDo from './ToDo'
+import ExternalAttack from './ToDo';
 
 import './App.css';
 import logo from './aws.png';
-
 import config from './config';
 
 function App() {
@@ -39,7 +38,7 @@ function App() {
 
 
 
-  const addAWSAccount = async (event) => {
+  const externalAttack = async (event) => {
 
     const newRoleInput = document.getElementById("newRole");
     const newExternalID = document.getElementById("externalID");
@@ -86,8 +85,8 @@ function App() {
         <Jumbotron>
           <Row>
             <Col md="6" className="logo">
-              <h1>Serverless Test</h1>
-              <p>This is a demo that showcases AWS serverless.</p>
+              <h1>Super Secure Your Cloud We Will Make</h1>
+              <p>Internal and External demo attacks</p>
               <p>Try and hack it!</p>
 
               <img src={logo} alt="Logo" />
@@ -95,7 +94,7 @@ function App() {
             <Col md="6">
               {idToken.length > 0 ?
                 (
-                  <ToDo addAWSAccount={addAWSAccount} />
+                  <ExternalAttack externalAttack={externalAttack}/>
                 ) : (
                   <Button
                     href={`https://${config.cognito_hosted_domain}/login?response_type=token&client_id=${config.aws_user_pools_web_client_id}&redirect_uri=${config.redirect_url}`}
@@ -112,7 +111,7 @@ function App() {
         <Jumbotron id="hidden_jumbotron" hidden>
           <Jumbotron className="jumbotron_modified">
               <p className="jumbotron_text">Executing command...</p><p className="jumbotron_text">aws sts assume-role --role-arn {role} --external-id {extID} --role-session-name hacking</p>
-              {successful ? (<p className="jumbotron_text_success">CONNECTION SUCCESSFUL</p>) : (<p className="jumbotron_text_fail">CONNECTION FAILED</p>)}
+              {successful ? (<h2 className="jumbotron_text_success">CONNECTION SUCCESSFUL</h2>) : (<h2 className="jumbotron_text_fail">CONNECTION FAILED</h2>)}
           </Jumbotron>
         </Jumbotron>
       </Container>

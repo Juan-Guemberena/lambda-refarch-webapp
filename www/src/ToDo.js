@@ -4,7 +4,7 @@ import './ToDo.css';
 
 
 
-function ToDo({  addAWSAccount }) {
+function ExternalAttack({  addAWSAccount }) {
   
   const [showHover,setHover] = useState(false);
   const [isCheating,setCheating] = useState(false);
@@ -24,7 +24,7 @@ function ToDo({  addAWSAccount }) {
   
   
   return (
-    <div className="ToDo">
+    <div className="ExternalAttack">
       <Row>
         <Col xs="12" className="mt-1 mb-1">
           <Form>
@@ -38,11 +38,13 @@ function ToDo({  addAWSAccount }) {
             <Button id="cheat_button" onClick={() => {cheat_button()} } onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} color="primary" className="ml-1">{isCheating ? "Uncheat" : "Cheat"}</Button>
             {showHover && (<div className="hoverText" id="cheat_text">Although not editable in the UI, many implementations do not prevent the user from intercepting and modifying the value.  Simulate by "cheating".</div>)}
           </Form>
-        </Col>
-       
+        </Col>      
+      </Row>
+      <Row>
+      <Button onClick={internalAttack} color="primary" className="ml-1">Basic Attack</Button>
       </Row>
     </div >
   );
 }
 
-export default ToDo;
+export default ExternalAttack;
