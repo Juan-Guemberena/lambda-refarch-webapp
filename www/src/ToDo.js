@@ -17,7 +17,6 @@ function ToDo({  addAWSAccount }) {
     }
     else{
       document.getElementById("externalID").setAttribute("readonly","true");
-      
       setCheating(false);
     }
     

@@ -65,8 +65,9 @@ function App() {
       url: `${config.api_base_url}`,
       data: newAccount
     });
-    console.log(result)
+
     console.log(result.status)
+    console.log(result.data)
 
     if (result && result.status === 401) {
       console.log('fail')
