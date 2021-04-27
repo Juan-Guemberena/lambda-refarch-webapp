@@ -46,10 +46,11 @@ function App() {
 
     if ((!role || role === '') || (!extID || extID === '')){
       document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
-      return;
+      return ;
     }
     else{
       document.getElementById("hidden_jumbotron").removeAttribute("hidden");
+      
     }
 
     
@@ -75,7 +76,9 @@ function App() {
       newRoleInput.value = '';
       newExternalID.value = '';
     }
+    return (<div><p>Executing command...</p><p>aws sts assume-role --role-arn ${role} --external-id ${extID} --role-session-name hacking</p></div>);
   }
+
 
 
   return (
