@@ -47,12 +47,12 @@ function App() {
 
 
     if ((!role || role === '') || (!extID || extID === '')){
+      console.log('this is happening')
       document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
-      return ;
+      return;
     }
     else{
       document.getElementById("hidden_jumbotron").removeAttribute("hidden");
-      
     }
 
     
@@ -113,7 +113,7 @@ function App() {
         </Jumbotron>
         <Jumbotron id="hidden_jumbotron" hidden>
           <Jumbotron className="jumbotron_modified">
-              <p className="jumbotron_text">Executing command...</p><p className="jumbotron_text">aws sts assume-role --role-arn ${role} --external-id ${extID} --role-session-name hacking</p>
+              <p className="jumbotron_text">Executing command...</p><p className="jumbotron_text">aws sts assume-role --role-arn {role} --external-id {extID} --role-session-name hacking</p>
           </Jumbotron>
         </Jumbotron>
       </Container>
