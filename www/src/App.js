@@ -11,6 +11,8 @@ import config from './config';
 function App() {
 
   const [idToken, setIdToken] = useState('');
+  const [role, setRole] = useState('');
+  const [extID,setExtID] = useState('');
 
   useEffect(() => {
     getIdToken();
@@ -39,9 +41,9 @@ function App() {
   const addAWSAccount = async (event) => {
 
     const newRoleInput = document.getElementById("newRole");
-    const role = newRoleInput.value;
+    setRole(newRoleInput.value);
     const newExternalID = document.getElementById("externalID");
-    const extID = newExternalID.value;
+    setExtID(newExternalID.value);
 
 
     if ((!role || role === '') || (!extID || extID === '')){
@@ -112,7 +114,7 @@ function App() {
         </Jumbotron>
         <Jumbotron id="hidden_jumbotron" hidden>
           <Jumbotron className="jumbotron_modified">
-          <p>Executing command...</p><p>aws sts assume-role --role-arn ${role} --external-id ${extID} --role-session-name hacking</p>
+              <p>Executing command...</p><p>aws sts assume-role --role-arn ${role} --external-id ${extID} --role-session-name hacking</p>
           </Jumbotron>
         </Jumbotron>
       </Container>
