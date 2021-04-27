@@ -44,14 +44,12 @@ function App() {
     const newExternalID = document.getElementById("externalID");
     const role = newRoleInput.value;
     const extID = newExternalID.value;
-
+    setRole(newRoleInput.value);
+    setExtID(newExternalID.value);
+    
     if ((!role || role === '') || (!extID || extID === '')){
-      console.log('this is happening')
       document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
       return;
-    }
-    else{
-      document.getElementById("hidden_jumbotron").removeAttribute("hidden");
     }
 
     
@@ -76,6 +74,7 @@ function App() {
     } else if (result && result.status === 200) {
       newRoleInput.value = '';
       newExternalID.value = '';
+      document.getElementById("hidden_jumbotron").removeAttribute("hidden");
     }
   }
 
