@@ -112,7 +112,7 @@ function App() {
         <Jumbotron id="hidden_jumbotron" hidden>
           <Jumbotron className="jumbotron_modified">
               <p className="jumbotron_text">Executing command...</p><p className="jumbotron_text">aws sts assume-role --role-arn {role} --external-id {extID} --role-session-name hacking</p>
-              {successful ? (<p className="jumbotron_text">Connection Succesful</p>) : (<p className="jumbotron_text">Connection Failed</p>)}
+              {successful ? (<p className="jumbotron_text_success">CONNECTION SUCCESSFUL</p>) : (<p className="jumbotron_text_fail">CONNECTION FAILED</p>)}
           </Jumbotron>
         </Jumbotron>
       </Container>

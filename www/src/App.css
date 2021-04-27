@@ -24,3 +24,11 @@
 .jumbotron_text{
   color:black;
 }
+
+.jumbotron_text_success{
+  color:green;
+}
+
+.jumbotron_text_fail{
+  color:red;
+}
