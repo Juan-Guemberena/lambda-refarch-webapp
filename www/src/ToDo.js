@@ -24,7 +24,7 @@ function ExternalAttack({  addAWSAccount }) {
   
   
   return (
-    <div className="ExternalAttack">
+    <div className="ExternalAttack" style={{ display: "flex" }}>
       <Row>
         <Col xs="12" className="mt-1 mb-1">
           <Form>
@@ -42,7 +42,7 @@ function ExternalAttack({  addAWSAccount }) {
       </Row>
       <br></br>
       <Row>
-      <Button style={{float: 'right'}} color="primary" className="ml-1">Basic Attack</Button>
+      <Button style={{display: 'flex', justifyContent: 'right'}} color="primary" className="ml-1">Basic Attack</Button>
       </Row>
     </div >
   );
