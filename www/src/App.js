@@ -78,7 +78,6 @@ function App() {
       newRoleInput.value = '';
       newExternalID.value = '';
     }
-    return (<div><p>Executing command...</p><p>aws sts assume-role --role-arn ${role} --external-id ${extID} --role-session-name hacking</p></div>);
   }
 
 
@@ -114,7 +113,7 @@ function App() {
         </Jumbotron>
         <Jumbotron id="hidden_jumbotron" hidden>
           <Jumbotron className="jumbotron_modified">
-              <p>Executing command...</p><p>aws sts assume-role --role-arn ${role} --external-id ${extID} --role-session-name hacking</p>
+              <p className="jumbotron_text">Executing command...</p><p className="jumbotron_text">aws sts assume-role --role-arn ${role} --external-id ${extID} --role-session-name hacking</p>
           </Jumbotron>
         </Jumbotron>
       </Container>
