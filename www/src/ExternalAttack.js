@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
 import './Attack.css';
-import {InternalAttack, internalAttack} from './InternalAttack';
+import InternalAttack from './InternalAttack';
 
 
 function ExternalAttack({  addAWSAccount }) {
@@ -45,7 +45,7 @@ function ExternalAttack({  addAWSAccount }) {
       <br></br>
       <br></br>
       <Row>
-      <Button onClick={<InternalAttack internalAttack={internalAttack}/>} color="primary" className="ml-1">Basic Attack</Button>
+      <Button onClick={<InternalAttack/>} color="primary" className="ml-1">Basic Attack</Button>
       </Row>
     </div >
   );

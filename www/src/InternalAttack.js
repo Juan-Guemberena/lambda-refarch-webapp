@@ -82,4 +82,3 @@ function InternalAttack({  addAWSAccount }) {
   }
   
   export default InternalAttack;
-  export default internalAttack;
