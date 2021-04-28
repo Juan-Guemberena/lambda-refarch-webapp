@@ -52,7 +52,7 @@ function ExternalAttack({  addAWSAccount }) {
       <br></br>
       <br></br>
       <Row>
-      <Button onClick={switchAttack(true)} color="primary" className="ml-1">Basic Attack</Button>
+      <Button onClick={setInternal(true)} color="primary" className="ml-1">Basic Attack</Button>
       </Row>
     </div >
   );
