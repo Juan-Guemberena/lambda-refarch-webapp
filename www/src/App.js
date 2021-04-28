@@ -15,7 +15,6 @@ function App() {
   const [extID,setExtID] = useState('');
   const [successful,setSuccess] = useState(false);
   const [isInternal,setInternal] = useState(true);
-  
   export function switchAttack(bool){
     setInternal(bool);
   };
