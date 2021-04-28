@@ -24,6 +24,11 @@ function InternalAttack({  addAWSAccount }) {
       <div className="InternalAttack" >
         <Row>
           <Col xs="12" className="mt-1 mb-1">
+              <h3>Internal demo attack</h3>
+              <p>This attack can happen when a user inside an AWS account has insecure credentials, and they get stolen by a malicious 3rd party.
+                 Inside the SaaS vendor's cloud, you'll find that sometimes there are "sts:assumeRole":"*" type of permissions, only limited by the external-id inside the clients cloud.
+                 The thing is, you don't need the external-id if you want to attack yourself and the cloud isn't well configured, so the only thing you need to find is a high privilege role to assume.
+              </p>
             <Form>
               <FormGroup>
                 <Label for="newRole" hidden>Role</Label>
@@ -36,8 +41,8 @@ function InternalAttack({  addAWSAccount }) {
           </Col>      
         </Row>
         <br></br>
-        <Row style={{ display: "flex" }}>
-        <Button style={{display: 'flex', justifyContent: 'right'}} color="primary" className="ml-1">Basic Attack</Button>
+        <Row>
+        <Button color="primary" className="ml-1">Advanced Attack</Button>
         </Row>
       </div >
     );

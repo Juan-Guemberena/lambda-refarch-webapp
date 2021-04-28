@@ -123,7 +123,7 @@ function App() {
         <Jumbotron>
           <Row>
             <Col md="6" className="logo">
-              <h1>Super Secure Your Cloud We Will Make</h1>
+              <h1>Super Secure Clouds We Make</h1>
               <p>Internal and External demo attacks</p>
               <p>Try and hack it!</p>
 
