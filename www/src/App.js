@@ -75,6 +75,44 @@ function App() {
       document.getElementById("hidden_jumbotron").removeAttribute("hidden");
     }
   }
+  const internalAttack = async (event) => {
+
+    const newRoleInput = document.getElementById("newRole");
+    const newExternalID = document.getElementById("externalID");
+    const role = newRoleInput.value;
+    const extID = newExternalID.value;
+    setRole(newRoleInput.value);
+    setExtID(newExternalID.value);
+
+    if ((!role || role === '') || (!extID || extID === '')){
+      document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
+      return;
+    }
+
+    
+    const newAccount = {
+      "roleARN": role,
+      "external-id": extID
+    };
+
+    axios.defaults.headers.post['Authorization'] = idToken
+ 
+    const result = await axios({
+      method: 'POST',
+      url: `${config.api_base_url}`,
+      data: newAccount
+    });
+
+
+    if (result && result.status === 401) {
+      clearCredentials();
+    } else if (result && result.status === 200) {
+      newRoleInput.value = '';
+      newExternalID.value = '';
+      if (result.data.message === 'Connection Successful') {setSuccess(true);} else {setSuccess(false)}
+      document.getElementById("hidden_jumbotron").removeAttribute("hidden");
+    }
+  }
 
 
 
