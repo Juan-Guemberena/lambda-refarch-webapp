@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Jumbotron, Row, Col, Button } from 'reactstrap';
 import axios from 'axios';
-import ExternalAttack from './ToDo';
+import ExternalAttack from './ExternalAttack';
 
 import './App.css';
 import logo from './aws.png';
