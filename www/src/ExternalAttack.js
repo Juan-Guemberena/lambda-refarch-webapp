@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
 import './Attack.css';
-import './InternalAttack';
+import InternalAttack from './InternalAttack';
 
 
 function ExternalAttack({  addAWSAccount }) {
