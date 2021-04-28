@@ -9,12 +9,12 @@ import config from './config';
 
 function App() {
 
-  
+
   const [idToken, setIdToken] = useState('');
   const [role, setRole] = useState('');
   const [extID,setExtID] = useState('');
   const [successful,setSuccess] = useState(false);
-  var [isInternal,setInternal] = useState(true);
+  const [isInternal,setInternal] = useState(true);
   export function switchAttack(bool){
     setInternal(bool);
   };
