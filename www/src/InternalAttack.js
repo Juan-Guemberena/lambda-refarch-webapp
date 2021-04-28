@@ -44,7 +44,7 @@ function InternalAttack({  addAWSAccount }) {
         </Row>
         <br></br>
         <Row>
-        <Button onclick={switchAttack(false)} color="primary" className="ml-1">Advanced Attack</Button>
+        <Button onclick={() => switchAttack(false)} color="primary" className="ml-1">Advanced Attack</Button>
         </Row>
       </div >
     );
