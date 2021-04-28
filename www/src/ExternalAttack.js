@@ -27,6 +27,11 @@ function ExternalAttack({  addAWSAccount }) {
     <div className="ExternalAttack" >
       <Row>
         <Col xs="12" className="mt-1 mb-1">
+          <h3>External demo attack</h3>
+          <p>This is a more advanced type of attack that simulates being the client of a SaaS vendor.
+            In this case, you would sign up for a service, then create a Role with appropriate permissions, paste its ARN and that would be it.
+            But some vendors provide easy-to-guess external-ids, so you could try to get access to other clients' accounts.
+          </p>
           <Form>
             <FormGroup>
               <Label for="newRole" hidden>Role</Label>
