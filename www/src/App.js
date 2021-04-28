@@ -13,6 +13,8 @@ function App() {
   const [role, setRole] = useState('');
   const [extID,setExtID] = useState('');
   const [successful,setSuccess] = useState(false);
+  var [isInternal,setInternal] = useState(true);
+  exports.setInternal = setInternal;
 
   useEffect(() => {
     getIdToken();
@@ -127,15 +129,18 @@ function App() {
             <Col md="6">
               {idToken.length > 0 ?
                 (
-                <InternalAttack internalAttack={internalAttack}/>
+                <Row>
+                  {isInternal ? (<InternalAttack internalAttack={internalAttack}/>): (<ExternalAttack externalAttack={externalAttack}/>)
+}
+                  </Row>
                 ) : (
-                  <Button
+                  <Row><Button
                     href={`https://${config.cognito_hosted_domain}/login?response_type=token&client_id=${config.aws_user_pools_web_client_id}&redirect_uri=${config.redirect_url}`}
                     color="primary"
                     className="mt-5 float-center"
                   >
                     Log In
-                  </Button>
+                  </Button></Row>
                 )
               }
             </Col>

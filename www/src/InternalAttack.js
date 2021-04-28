@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { Button, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
 import './Attack.css';
 import ExternalAttack from './ExternalAttack';
-import './App';
+
+
 
 
 function InternalAttack({  addAWSAccount }) {
-  
+    var myApp = require('./App');
+    var setInternal=myApp.setInternal;
     const [showHover,setHover] = useState(false);
-  
+    
     function brute_force_button(){
         var role_txt = document.getElementById('newRole');
         var roles = ["SSC", "SSC-role", "SecureCloud-role", "SecureCloudRole", "SSC_role_Dev", "SSC_role_prod", "SSC_role"];
@@ -44,7 +46,7 @@ function InternalAttack({  addAWSAccount }) {
         </Row>
         <br></br>
         <Row>
-        <Button onclick={() => {return;}} color="primary" className="ml-1">Advanced Attack</Button>
+        <Button onclick={setInternal(false)} color="primary" className="ml-1">Advanced Attack</Button>
         </Row>
       </div >
     );
