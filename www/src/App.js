@@ -14,7 +14,9 @@ function App() {
   const [extID,setExtID] = useState('');
   const [successful,setSuccess] = useState(false);
   var [isInternal,setInternal] = useState(true);
-  exports.setInternal = setInternal;
+  export function switchAttack(bool){
+    setInternal(bool);
+  };
 
   useEffect(() => {
     getIdToken();
