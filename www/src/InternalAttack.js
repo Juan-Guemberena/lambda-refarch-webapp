@@ -32,7 +32,7 @@ function InternalAttack({  addAWSAccount }) {
             <Form>
               <FormGroup>
                 <Label for="newRole" hidden>Role</Label>
-                <Input type="text" name="role" id="newRole" placeholder="RoleARN" />
+                <Input type="text" name="role" id="newRole" placeholder="role-name" />
               </FormGroup>
               <Button onClick={addAWSAccount} color="primary" className="ml-1">Connect</Button>
               <Button id="brute_force_button" onClick={() => {brute_force_button()} } onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} color="primary" className="ml-1">Brute Force</Button>

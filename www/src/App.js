@@ -79,13 +79,10 @@ function App() {
   const internalAttack = async (event) => {
 
     const newRoleInput = document.getElementById("newRole");
-    const newExternalID = document.getElementById("externalID");
     const role = newRoleInput.value;
-    const extID = newExternalID.value;
     setRole(newRoleInput.value);
-    setExtID(newExternalID.value);
 
-    if ((!role || role === '') || (!extID || extID === '')){
+    if (!role || role === ''){
       document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
       return;
     }
@@ -93,7 +90,6 @@ function App() {
     
     const newAccount = {
       "roleARN": role,
-      "external-id": extID
     };
 
     axios.defaults.headers.post['Authorization'] = idToken
@@ -109,7 +105,6 @@ function App() {
       clearCredentials();
     } else if (result && result.status === 200) {
       newRoleInput.value = '';
-      newExternalID.value = '';
       if (result.data.message === 'Connection Successful') {setSuccess(true);} else {setSuccess(false)}
       document.getElementById("hidden_jumbotron").removeAttribute("hidden");
     }
@@ -132,7 +127,7 @@ function App() {
             <Col md="6">
               {idToken.length > 0 ?
                 (
-                  <InternalAttack internalAttack={internalAttack}/>
+                (<InternalAttack internalAttack={internalAttack}/>)
                 ) : (
                   <Button
                     href={`https://${config.cognito_hosted_domain}/login?response_type=token&client_id=${config.aws_user_pools_web_client_id}&redirect_uri=${config.redirect_url}`}
