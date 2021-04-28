@@ -7,8 +7,6 @@ import switchAttack from './App';
 
 
 function InternalAttack({  addAWSAccount }) {
-    var myApp = require('./App');
-    var setInternal=myApp.setInternal;
     const [showHover,setHover] = useState(false);
     
     function brute_force_button(){
@@ -46,7 +44,7 @@ function InternalAttack({  addAWSAccount }) {
         </Row>
         <br></br>
         <Row>
-        <Button onclick={setInternal(false)} color="primary" className="ml-1">Advanced Attack</Button>
+        <Button onclick={switchAttack(false)} color="primary" className="ml-1">Advanced Attack</Button>
         </Row>
       </div >
     );
