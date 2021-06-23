@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
 import './Attack.css';
-import switchAttack from './App';
+import './App';
 
 
 
 
 function InternalAttack({  addAWSAccount }) {
+    var myApp = require('./App');
+    var setInternal=myApp.setInternal;
     const [showHover,setHover] = useState(false);
     
     function brute_force_button(){
@@ -44,7 +46,7 @@ function InternalAttack({  addAWSAccount }) {
         </Row>
         <br></br>
         <Row>
-        <Button onclick={() => switchAttack(false)} color="primary" className="ml-1">Advanced Attack</Button>
+        <Button onclick={setInternal(false)} color="primary" className="ml-1">Advanced Attack</Button>
         </Row>
       </div >
     );

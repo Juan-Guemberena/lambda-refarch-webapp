@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
 import './Attack.css';
-import switchAttack from './App';
+import './App';
 
 
 function ExternalAttack({  addAWSAccount }) {
+
+  var myApp = require('./App');
+  var setInternal=myApp.setInternal;
   const [showHover,setHover] = useState(false);
   const [isCheating,setCheating] = useState(false);
 
@@ -49,7 +52,7 @@ function ExternalAttack({  addAWSAccount }) {
       <br></br>
       <br></br>
       <Row>
-      <Button onClick={() => switchAttack(true)} color="primary" className="ml-1">Basic Attack</Button>
+      <Button onClick={setInternal(false)} color="primary" className="ml-1">Basic Attack</Button>
       </Row>
     </div >
   );
