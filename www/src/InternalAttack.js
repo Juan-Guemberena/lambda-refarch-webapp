@@ -45,7 +45,11 @@ function InternalAttack({  addAWSAccount }) {
         </Row>
         <br></br>
         <Row>
+<<<<<<< HEAD
         <Button onclick={() => {return;}} color="primary" className="ml-1">Advanced Attack</Button>
+=======
+        <Button onclick={() => {return <ExternalAttack/>}} color="primary" className="ml-1">Advanced Attack</Button>
+>>>>>>> parent of 583100f (Test)
         </Row>
       </div >
     );

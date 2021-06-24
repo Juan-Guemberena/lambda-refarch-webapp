@@ -79,7 +79,7 @@ function App() {
     }
   }
   const internalAttack = async (event) => {
-    console.log(event)
+
     const newRoleInput = document.getElementById("newRole");
     const role = newRoleInput.value;
     setRole(newRoleInput.value);
