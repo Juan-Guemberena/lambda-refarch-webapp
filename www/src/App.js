@@ -12,7 +12,6 @@ async function internalAttack (event)  {
   const [role, setRole] = useState('');
   console.log(event)
   const newRoleInput = document.getElementById("newRole");
-  const role = newRoleInput.value;
   setRole(newRoleInput.value);
 
   if (!role || role === ''){
