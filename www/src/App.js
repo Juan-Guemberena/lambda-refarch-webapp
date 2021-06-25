@@ -76,7 +76,7 @@ function App() {
   //     document.getElementById("hidden_jumbotron").removeAttribute("hidden");
   //   }
   // }
-function internalAttack (event)  {
+async function internalAttack (event)  {
     console.log(event)
     const newRoleInput = document.getElementById("newRole");
     const role = newRoleInput.value;
