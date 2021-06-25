@@ -22,7 +22,7 @@ function InternalAttack({addAWSAccount}) {
     
     
     return (
-      <div className="InternalAttack" >
+      <div className="InternalAttack">
         <Row>
           <Col xs="12" className="mt-1 mb-1">
               <h3>Internal demo attack</h3>
@@ -32,7 +32,6 @@ function InternalAttack({addAWSAccount}) {
               </p>
             <Form>
               <FormGroup>
-                <Label for="newRole" hidden>Role</Label>
                 <Input type="text" name="role" id="newRole" placeholder="role-name"/>
               </FormGroup>
               <Button onClick={addAWSAccount} color="primary" className="ml-1">Connect</Button>
@@ -42,10 +41,8 @@ function InternalAttack({addAWSAccount}) {
           </Col>      
         </Row>
         <br></br>
-        <Row>
         {/* <Button onclick={() => {return;}} color="primary" className="ml-1">Advanced Attack</Button> */}
-        </Row>
-      </div >
+      </div>
     );
   }
   
