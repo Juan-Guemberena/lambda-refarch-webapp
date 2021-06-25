@@ -7,6 +7,11 @@ import './App.css';
 import logo from './aws.png';
 import config from './config';
 
+const [idToken, setIdToken] = useState('');
+const [role, setRole] = useState('');
+const [extID,setExtID] = useState('');
+const [successful,setSuccess] = useState(false);
+
 async function internalAttack (event)  {
   console.log(event)
   const newRoleInput = document.getElementById("newRole");
@@ -46,10 +51,7 @@ async function internalAttack (event)  {
 
 function App() {
 
-  const [idToken, setIdToken] = useState('');
-  const [role, setRole] = useState('');
-  const [extID,setExtID] = useState('');
-  const [successful,setSuccess] = useState(false);
+
 
   useEffect(() => {
     getIdToken();
