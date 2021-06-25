@@ -8,39 +8,45 @@ import logo from './aws.png';
 import config from './config';
 
 
-async function internalAttack (event)  {
-  const [role, setRole] = useState('');
-  console.log(event)
-  const newRoleInput = document.getElementById("newRole");
-  setRole(newRoleInput.value);
+const clearCredentials = () => {
+  window.location.href = config.redirect_url;
+}
 
-  if (!role || role === ''){
-    document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
-    return;
-  }
+
+
+// const internalAttack = (event) => {
+//   const [successful,setSuccess] = useState(false);
+//   console.log(event)
+//   const newRoleInput = document.getElementById("newRole");
+//   const role = newRoleInput.value;
+
+//   if (!role || role === ''){
+//     document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
+//     return;
+//   }
 
   
-  const newAccount = {
-    "roleARN": role,
-  };
+//   const newAccount = {
+//     "roleARN": role,
+//   };
 
-  axios.defaults.headers.post['Authorization'] = idToken
+//   axios.defaults.headers.post['Authorization'] = idToken
 
-  const result = await axios({
-    method: 'POST',
-    url: `${config.api_base_url}`,
-    data: newAccount
-  });
+//   const result = await axios({
+//     method: 'POST',
+//     url: `${config.api_base_url}`,
+//     data: newAccount
+//   });
 
 
-  if (result && result.status === 401) {
-    clearCredentials();
-  } else if (result && result.status === 200) {
-    newRoleInput.value = '';
-    if (result.data.message === 'Connection Successful') {setSuccess(true);} else {setSuccess(false)}
-    document.getElementById("hidden_jumbotron").removeAttribute("hidden");
-  }
-}
+//   if (result && result.status === 401) {
+//     clearCredentials();
+//   } else if (result && result.status === 200) {
+//     newRoleInput.value = '';
+//     if (result.data.message === 'Connection Successful') {setSuccess(true);} else {setSuccess(false)}
+//     document.getElementById("hidden_jumbotron").removeAttribute("hidden");
+//   }
+// }
 
 
 
@@ -49,7 +55,7 @@ function App() {
   const [idToken, setIdToken] = useState('');
 
   //const [extID,setExtID] = useState('');
-  //const [successful,setSuccess] = useState(false);
+  
 
 
 
@@ -60,9 +66,7 @@ function App() {
 
 
 
-  const clearCredentials = () => {
-    window.location.href = config.redirect_url;
-  }
+  
 
   const getIdToken = () => {
     const hash = window.location.hash.substr(1);
