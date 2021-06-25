@@ -4,7 +4,7 @@ import './Attack.css';
 import './App';
 
 
-function InternalAttack({  addAWSAccount }) {
+function InternalAttack({addAWSAccount}) {
   
     const [showHover,setHover] = useState(false);
   
@@ -49,4 +49,4 @@ function InternalAttack({  addAWSAccount }) {
     );
   }
   
-  export default InternalAttack;
+export default InternalAttack;
