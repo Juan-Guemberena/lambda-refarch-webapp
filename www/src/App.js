@@ -76,7 +76,7 @@ function App() {
   //     document.getElementById("hidden_jumbotron").removeAttribute("hidden");
   //   }
   // }
-  async function internalAttack (event)  {
+function internalAttack (event)  {
     console.log(event)
     const newRoleInput = document.getElementById("newRole");
     const role = newRoleInput.value;
@@ -125,7 +125,7 @@ function App() {
               <img src={logo} alt="Logo" />
             </Col>
             <Col md="6">
-              {idToken.length > 0 ? (<Row><h1>Super Secure Clouds We Make</h1></Row>) : (
+              {idToken.length > 0 ? (<div><p>Internal and External demo attacks</p></div>) : (
                   <Button
                     href={`https://${config.cognito_hosted_domain}/login?response_type=token&client_id=${config.aws_user_pools_web_client_id}&redirect_uri=${config.redirect_url}`}
                     color="primary"
