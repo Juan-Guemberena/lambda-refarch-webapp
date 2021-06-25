@@ -38,45 +38,45 @@ function App() {
 
 
 
-  const externalAttack = async (event) => {
+  // const externalAttack = async (event) => {
 
-    const newRoleInput = document.getElementById("newRole");
-    const newExternalID = document.getElementById("externalID");
-    const role = newRoleInput.value;
-    const extID = newExternalID.value;
-    setRole(newRoleInput.value);
-    setExtID(newExternalID.value);
+  //   const newRoleInput = document.getElementById("newRole");
+  //   const newExternalID = document.getElementById("externalID");
+  //   const role = newRoleInput.value;
+  //   const extID = newExternalID.value;
+  //   setRole(newRoleInput.value);
+  //   setExtID(newExternalID.value);
 
-    if ((!role || role === '') || (!extID || extID === '')){
-      document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
-      return;
-    }
+  //   if ((!role || role === '') || (!extID || extID === '')){
+  //     document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
+  //     return;
+  //   }
 
     
-    const newAccount = {
-      "roleARN": role,
-      "external-id": extID
-    };
+  //   const newAccount = {
+  //     "roleARN": role,
+  //     "external-id": extID
+  //   };
 
-    axios.defaults.headers.post['Authorization'] = idToken
+  //   axios.defaults.headers.post['Authorization'] = idToken
  
-    const result = await axios({
-      method: 'POST',
-      url: `${config.api_base_url}`,
-      data: newAccount
-    });
+  //   const result = await axios({
+  //     method: 'POST',
+  //     url: `${config.api_base_url}`,
+  //     data: newAccount
+  //   });
 
 
-    if (result && result.status === 401) {
-      clearCredentials();
-    } else if (result && result.status === 200) {
-      newRoleInput.value = '';
-      newExternalID.value = '';
-      if (result.data.message === 'Connection Successful') {setSuccess(true);} else {setSuccess(false)}
-      document.getElementById("hidden_jumbotron").removeAttribute("hidden");
-    }
-  }
-  const internalAttack = async (event) => {
+  //   if (result && result.status === 401) {
+  //     clearCredentials();
+  //   } else if (result && result.status === 200) {
+  //     newRoleInput.value = '';
+  //     newExternalID.value = '';
+  //     if (result.data.message === 'Connection Successful') {setSuccess(true);} else {setSuccess(false)}
+  //     document.getElementById("hidden_jumbotron").removeAttribute("hidden");
+  //   }
+  // }
+  async function internalAttack (event)  {
     console.log(event)
     const newRoleInput = document.getElementById("newRole");
     const role = newRoleInput.value;
@@ -141,12 +141,12 @@ function App() {
             </Col>
           </Row>
         </Jumbotron>
-        <Jumbotron id="hidden_jumbotron" hidden>
+        {/* <Jumbotron id="hidden_jumbotron" hidden>
           <Jumbotron className="jumbotron_modified">
               <p className="jumbotron_text">Executing command...</p><p className="jumbotron_text">aws sts assume-role --role-arn arn:aws:iam::111111111111:role/{role} --external-id {extID} --role-session-name hacking</p>
               {successful ? (<h2 className="jumbotron_text_success">CONNECTION SUCCESSFUL</h2>) : (<h2 className="jumbotron_text_fail">CONNECTION FAILED</h2>)}
           </Jumbotron>
-        </Jumbotron>
+        </Jumbotron> */}
       </Container>
     </div>
   );
