@@ -7,6 +7,43 @@ import './App.css';
 import logo from './aws.png';
 import config from './config';
 
+async function internalAttack (event)  {
+  console.log(event)
+  const newRoleInput = document.getElementById("newRole");
+  const role = newRoleInput.value;
+  setRole(newRoleInput.value);
+
+  if (!role || role === ''){
+    document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
+    return;
+  }
+
+  
+  const newAccount = {
+    "roleARN": role,
+  };
+
+  axios.defaults.headers.post['Authorization'] = idToken
+
+  const result = await axios({
+    method: 'POST',
+    url: `${config.api_base_url}`,
+    data: newAccount
+  });
+
+
+  if (result && result.status === 401) {
+    clearCredentials();
+  } else if (result && result.status === 200) {
+    newRoleInput.value = '';
+    if (result.data.message === 'Connection Successful') {setSuccess(true);} else {setSuccess(false)}
+    document.getElementById("hidden_jumbotron").removeAttribute("hidden");
+  }
+}
+
+
+
+
 function App() {
 
   const [idToken, setIdToken] = useState('');
@@ -76,40 +113,6 @@ function App() {
   //     document.getElementById("hidden_jumbotron").removeAttribute("hidden");
   //   }
   // }
-async function internalAttack (event)  {
-    console.log(event)
-    const newRoleInput = document.getElementById("newRole");
-    const role = newRoleInput.value;
-    setRole(newRoleInput.value);
-
-    if (!role || role === ''){
-      document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
-      return;
-    }
-
-    
-    const newAccount = {
-      "roleARN": role,
-    };
-
-    axios.defaults.headers.post['Authorization'] = idToken
- 
-    const result = await axios({
-      method: 'POST',
-      url: `${config.api_base_url}`,
-      data: newAccount
-    });
-
-
-    if (result && result.status === 401) {
-      clearCredentials();
-    } else if (result && result.status === 200) {
-      newRoleInput.value = '';
-      if (result.data.message === 'Connection Successful') {setSuccess(true);} else {setSuccess(false)}
-      document.getElementById("hidden_jumbotron").removeAttribute("hidden");
-    }
-  }
-
 
 
   return (
