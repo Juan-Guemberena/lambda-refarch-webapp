@@ -125,10 +125,7 @@ function App() {
               <img src={logo} alt="Logo" />
             </Col>
             <Col md="6">
-              {idToken.length > 0 ?
-                (
-                <InternalAttack internalAttack={internalAttack}/>
-                ) : (
+              {idToken.length > 0 ? (<Row><h1>Super Secure Clouds We Make</h1></Row>) : (
                   <Button
                     href={`https://${config.cognito_hosted_domain}/login?response_type=token&client_id=${config.aws_user_pools_web_client_id}&redirect_uri=${config.redirect_url}`}
                     color="primary"
