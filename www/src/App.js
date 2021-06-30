@@ -14,7 +14,7 @@ const clearCredentials = () => {
 
 
 
-const internalAttack = (event) => {
+const internalAttack = async (event) => {
   const [successful,setSuccess] = useState(false);
   console.log(event)
   const newRoleInput = document.getElementById("newRole");
