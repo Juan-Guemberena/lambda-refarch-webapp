@@ -14,7 +14,7 @@ const clearCredentials = () => {
 
 
 
-const internalAttack = async (event) => {
+const InternalAttack = async (event) => {
   const [successful,setSuccess] = useState(false);
   console.log(event)
   const newRoleInput = document.getElementById("newRole");
@@ -80,7 +80,7 @@ function App() {
 
 
 
-  const externalAttack = async (event) => {
+  const ExternalAttack = async (event) => {
 
     const newRoleInput = document.getElementById("newRole");
     const newExternalID = document.getElementById("externalID");
