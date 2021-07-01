@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
+import {setRole, setExtID, role, extID, clearCredentials, setSuccess, idToken} from './App';
 import './Attack.css';
+import InternalAttack from './InternalAttack';
 
 
-function ExternalAttack({  addAWSAccount }) {
+function ExternalAttack() {
 
-  var myApp = require('./App');
-  var setInternal=myApp.setInternal;
   const [showHover,setHover] = useState(false);
   const [isCheating,setCheating] = useState(false);
 
@@ -40,7 +40,7 @@ function ExternalAttack({  addAWSAccount }) {
               <Label for="newExternalID" hidden>ExtID</Label>
               <Input type="text" name="extID" id="externalID" placeholder="example_insecure_external_id" readonly="true"/>
             </FormGroup>
-            <Button onClick={addAWSAccount} color="primary" className="ml-1">Connect</Button>
+            <Button onClick={externalAttack} color="primary" className="ml-1">Connect</Button>
             <Button id="cheat_button" onClick={() => {cheat_button()} } onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} color="primary" className="ml-1">{isCheating ? "Uncheat" : "Cheat"}</Button>
             {showHover && (<div className="hoverText" id="cheat_text">Although not editable in the UI, many implementations do not prevent the user from intercepting and modifying the value.  Simulate by "cheating".</div>)}
           </Form>
@@ -51,10 +51,47 @@ function ExternalAttack({  addAWSAccount }) {
       <br></br>
       <br></br>
       <Row>
-      <Button onClick={setInternal(false)} color="primary" className="ml-1">Basic Attack</Button>
+      <Button onClick={<InternalAttack/>} color="primary" className="ml-1">Basic Attack</Button>
       </Row>
     </div >
   );
+}
+
+const externalAttack = async (event) => {
+
+  const newRoleInput = document.getElementById("newRole");
+  const newExternalID = document.getElementById("externalID");
+  setRole(newRoleInput.value);
+  setExtID(newExternalID.value);
+
+  if ((!role || role === '') || (!extID || extID === '')){
+    document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
+    return;
+  }
+
+  
+  const newAccount = {
+    "roleARN": role,
+    "external-id": extID
+  };
+
+  axios.defaults.headers.post['Authorization'] = idToken
+
+  const result = await axios({
+    method: 'POST',
+    url: `${config.api_base_url}`,
+    data: newAccount
+  });
+
+
+  if (result && result.status === 401) {
+    clearCredentials();
+  } else if (result && result.status === 200) {
+    newRoleInput.value = '';
+    newExternalID.value = '';
+    if (result.data.message === 'Connection Successful') {setSuccess(true);} else {setSuccess(false)}
+    document.getElementById("hidden_jumbotron").removeAttribute("hidden");
+  }
 }
 
 export default ExternalAttack;

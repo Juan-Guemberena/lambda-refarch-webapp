@@ -1,26 +1,15 @@
 import React, { useState } from 'react';
 import { Button, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
 import './Attack.css';
-import ExternalAttack from './ExternalAttack';
+import {setSuccess, role, setRole, idToken} from './App';
+import {ExternalAttack} from './ExternalAttack';
 
 
 
 
-function InternalAttack({  addAWSAccount }) {
-    var myApp = require('./App');
-    var setInternal=myApp.setInternal;
+function InternalAttack() {
+
     const [showHover,setHover] = useState(false);
-    
-    function brute_force_button(){
-        var role_txt = document.getElementById('newRole');
-        var roles = ["SSC", "SSC-role", "SecureCloud-role", "SecureCloudRole", "SSC_role_Dev", "SSC_role_prod", "SSC_role"];
-        role_txt.value = roles[0];
-        for(let i = 1 ; i < roles.length ; i++){
-            setTimeout(function() {
-                role_txt.value = roles[i];
-            }, i*1000);
-        }      
-    }
 
     
     
@@ -38,7 +27,7 @@ function InternalAttack({  addAWSAccount }) {
                 <Label for="newRole" hidden>Role</Label>
                 <Input type="text" name="role" id="newRole" placeholder="role-name"/>
               </FormGroup>
-              <Button onClick={addAWSAccount} color="primary" className="ml-1">Connect</Button>
+              <Button onClick={internalAttack} color="primary" className="ml-1">Connect</Button>
               <Button id="brute_force_button" onClick={() => {brute_force_button()} } onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} color="primary" className="ml-1">Brute Force</Button>
               {showHover && (<div className="hoverText" id="brute_force_text">Click to simulate running a tool like Pacu to brute force the role (by trying known or common words and numbers and their combinations)</div>)}
             </Form>
@@ -51,5 +40,48 @@ function InternalAttack({  addAWSAccount }) {
       </div >
     );
   }
+
+function brute_force_button(){
+    var role_txt = document.getElementById('newRole');
+    var roles = ["SSC", "SSC-role", "SecureCloud-role", "SecureCloudRole", "SSC_role_Dev", "SSC_role_prod", "SSC_role"];
+    role_txt.value = roles[0];
+    for(let i = 1 ; i < roles.length ; i++){
+        setTimeout(function() {
+            role_txt.value = roles[i];
+        }, i*1000);
+    }      
+}
+
+
+const internalAttack = async (event) => {
+  const newRoleInput = document.getElementById("newRole");
+  setRole(newRoleInput.value);
+
+  if (!role || role === ''){
+    document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
+    return;
+  }
+
   
-  export default InternalAttack;
+  const newAccount = {
+    "roleARN": role,
+  };
+
+  axios.defaults.headers.post['Authorization'] = idToken
+
+  const result = await axios({
+    method: 'POST',
+    url: `${config.api_base_url}`,
+    data: newAccount
+  });
+
+
+  if (result && result.status === 401) {
+    clearCredentials();
+  } else if (result && result.status === 200) {
+    newRoleInput.value = '';
+    if (result.data.message === 'Connection Successful') {setSuccess(true);} else {setSuccess(false)}
+    document.getElementById("hidden_jumbotron").removeAttribute("hidden");
+  }
+}
+export default InternalAttack;

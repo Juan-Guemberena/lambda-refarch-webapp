@@ -9,12 +9,11 @@ import config from './config';
 
 function App() {
 
-  const [idToken, setIdToken] = useState('');
-  const [role, setRole] = useState('');
-  const [extID,setExtID] = useState('');
-  const [successful,setSuccess] = useState(false);
-  var [isInternal,setInternal] = useState(true);
-  exports.setInternal = setInternal;
+  export const [idToken, setIdToken] = useState('');
+  export const [role, setRole] = useState('');
+  export const [extID,setExtID] = useState('');
+  export const [successful,setSuccess] = useState(false);
+  export const [isInternal,setInternal] = useState(true);
 
   useEffect(() => {
     getIdToken();
@@ -40,77 +39,8 @@ function App() {
 
 
 
-  const externalAttack = async (event) => {
-
-    const newRoleInput = document.getElementById("newRole");
-    const newExternalID = document.getElementById("externalID");
-    const role = newRoleInput.value;
-    const extID = newExternalID.value;
-    setRole(newRoleInput.value);
-    setExtID(newExternalID.value);
-
-    if ((!role || role === '') || (!extID || extID === '')){
-      document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
-      return;
-    }
-
-    
-    const newAccount = {
-      "roleARN": role,
-      "external-id": extID
-    };
-
-    axios.defaults.headers.post['Authorization'] = idToken
- 
-    const result = await axios({
-      method: 'POST',
-      url: `${config.api_base_url}`,
-      data: newAccount
-    });
-
-
-    if (result && result.status === 401) {
-      clearCredentials();
-    } else if (result && result.status === 200) {
-      newRoleInput.value = '';
-      newExternalID.value = '';
-      if (result.data.message === 'Connection Successful') {setSuccess(true);} else {setSuccess(false)}
-      document.getElementById("hidden_jumbotron").removeAttribute("hidden");
-    }
-  }
-  const internalAttack = async (event) => {
-
-    const newRoleInput = document.getElementById("newRole");
-    const role = newRoleInput.value;
-    setRole(newRoleInput.value);
-
-    if (!role || role === ''){
-      document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
-      return;
-    }
-
-    
-    const newAccount = {
-      "roleARN": role,
-    };
-
-    axios.defaults.headers.post['Authorization'] = idToken
- 
-    const result = await axios({
-      method: 'POST',
-      url: `${config.api_base_url}`,
-      data: newAccount
-    });
-
-
-    if (result && result.status === 401) {
-      clearCredentials();
-    } else if (result && result.status === 200) {
-      newRoleInput.value = '';
-      if (result.data.message === 'Connection Successful') {setSuccess(true);} else {setSuccess(false)}
-      document.getElementById("hidden_jumbotron").removeAttribute("hidden");
-    }
-  }
+  
+  
 
 
 
@@ -130,7 +60,7 @@ function App() {
               {idToken.length > 0 ?
                 (
                 <Row>
-                  {isInternal ? (<InternalAttack internalAttack={internalAttack}/>): (<ExternalAttack externalAttack={externalAttack}/>)
+                  {isInternal ? (<InternalAttack/>): (<ExternalAttack externalAttack={externalAttack}/>)
 }
                   </Row>
                 ) : (
