@@ -2,6 +2,7 @@ import config from './config';
 import React, { useState, useEffect } from 'react';
 import { Container, Jumbotron, Row, Col, Button, Form, FormGroup,Label,Input } from 'reactstrap';
 import axios from 'axios';
+import setSuccess from './App';
 
 const clearCredentials = () => {
   window.location.href = config.redirect_url;
@@ -78,10 +79,11 @@ const internalAttack = async (role) => {
     clearCredentials();
   } else if (result && result.status === 200) {
     newRoleInput.value = '';
-    if (result.data.message === 'Connection Successful') {setSuccess(true);} else {setSuccess(false)}
+    if (result.data.message === 'Connection Successful') {console.log('success')} else {console.log('fail')}
     document.getElementById("hidden_jumbotron").removeAttribute("hidden");
   }
   }
+
 // import React, { useState } from 'react';
 // import { Button, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
 // import './Attack.css';

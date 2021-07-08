@@ -16,7 +16,12 @@ export default class App extends React.Component {
       successful: false,
       attack: 'internal'
     };
+    this.setSuccess = this.setSuccess.bind(this)
   }
+  setSuccess(bool){
+    this.setState({successful: bool})
+  }
+
 
   setIdToken(idToken){
     this.setState({
