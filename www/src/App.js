@@ -51,7 +51,7 @@ export default class App extends React.Component {
               <img src={logo} alt="Logo" />
             </Col>
             <Col md="6">
-              {idToken.length > 0 ?
+              {this.state.idToken.length > 0 ?
                 (
                 <Row>
                   <InternalAttack props={this.state}/>
@@ -71,8 +71,8 @@ export default class App extends React.Component {
         </Jumbotron>
         <Jumbotron id="hidden_jumbotron" hidden>
           <Jumbotron className="jumbotron_modified">
-              <p className="jumbotron_text">Executing command...</p><p className="jumbotron_text">aws sts assume-role --role-arn arn:aws:iam::111111111111:role/{role} --external-id {extID} --role-session-name hacking</p>
-              {successful ? (<h2 className="jumbotron_text_success">CONNECTION SUCCESSFUL</h2>) : (<h2 className="jumbotron_text_fail">CONNECTION FAILED</h2>)}
+              <p className="jumbotron_text">Executing command...</p><p className="jumbotron_text">aws sts assume-role --role-arn arn:aws:iam::111111111111:role/{this.state.role} --external-id {this.state.extID} --role-session-name hacking</p>
+              {this.state.successful ? (<h2 className="jumbotron_text_success">CONNECTION SUCCESSFUL</h2>) : (<h2 className="jumbotron_text_fail">CONNECTION FAILED</h2>)}
           </Jumbotron>
         </Jumbotron>
       </Container>
