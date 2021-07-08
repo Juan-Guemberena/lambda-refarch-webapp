@@ -1,6 +1,7 @@
 import config from './config';
 import React, { useState, useEffect } from 'react';
 import { Container, Jumbotron, Row, Col, Button, Form, FormGroup,Label,Input } from 'reactstrap';
+import axios from 'axios';
 
 const clearCredentials = () => {
   window.location.href = config.redirect_url;
@@ -23,9 +24,9 @@ export default class InternalAttack extends React.Component {
               <Label for="newRole" hidden>Role</Label>
               <Input type="text" name="role" id="newRole" placeholder="role-name"/>
             </FormGroup>
-            <Button onClick={internalAttack} color="primary" className="ml-1">Connect</Button>
-            <Button id="brute_force_button" onClick={() => {brute_force_button()} } onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} color="primary" className="ml-1">Brute Force</Button>
-            {showHover && (<div className="hoverText" id="brute_force_text">Click to simulate running a tool like Pacu to brute force the role (by trying known or common words and numbers and their combinations)</div>)}
+            <Button onClick={internalAttack(this.role)} color="primary" className="ml-1">Connect</Button>
+            <Button id="brute_force_button" onClick={() => {brute_force_button()} } color="primary" className="ml-1">Brute Force</Button>
+            {(<div className="hoverText" id="brute_force_text">Click to simulate running a tool like Pacu to brute force the role (by trying known or common words and numbers and their combinations)</div>)}
           </Form>
         </Col>      
       </Row>
@@ -37,7 +38,6 @@ export default class InternalAttack extends React.Component {
   );
 }
 }
-const [showHover,setHover] = useState(false);
 
 function brute_force_button(){
   var role_txt = document.getElementById('newRole');
@@ -52,9 +52,8 @@ function brute_force_button(){
 
 
 
-const internalAttack = async (event) => {
+const internalAttack = async (role) => {
   const newRoleInput = document.getElementById("newRole");
-  setRole(newRoleInput.value);
   
   if (!role || role === ''){
     document.getElementById("hidden_jumbotron").setAttribute("hidden","true");
