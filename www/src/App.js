@@ -7,8 +7,8 @@ import config from './config';
 
 
 export default class App extends React.Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       idToken: '',
       role: '',
@@ -16,8 +16,8 @@ export default class App extends React.Component {
       successful: false,
       attack: 'internal'
     };
-  };
-  render()
+  }
+
   setIdToken(idToken){
     this.setState({
       idToken: idToken
