@@ -17,7 +17,7 @@ export default class App extends React.Component {
       attack: 'internal'
     };
   };
-
+  render()
   setIdToken(idToken){
     this.setState({
       idToken: idToken
@@ -54,7 +54,7 @@ export default class App extends React.Component {
               {idToken.length > 0 ?
                 (
                 <Row>
-                  {isInternal ? (<InternalAttack props={this.state} />): (<ExternalAttack/>)}
+                  <InternalAttack props={this.state}/>
                   </Row>
                 ) : (
                   <Row><Button
