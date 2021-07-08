@@ -25,7 +25,7 @@ export default class InternalAttack extends React.Component {
               <Label for="newRole" hidden>Role</Label>
               <Input type="text" name="role" id="newRole" placeholder="role-name"/>
             </FormGroup>
-            <Button onClick={internalAttack(this.role)} color="primary" className="ml-1">Connect</Button>
+            <Button onClick={internalAttack(this.role,this.idToken)} color="primary" className="ml-1">Connect</Button>
             <Button id="brute_force_button" onClick={() => {brute_force_button()} } color="primary" className="ml-1">Brute Force</Button>
             {(<div className="hoverText" id="brute_force_text">Click to simulate running a tool like Pacu to brute force the role (by trying known or common words and numbers and their combinations)</div>)}
           </Form>
@@ -53,7 +53,7 @@ function brute_force_button(){
 
 
 
-const internalAttack = async (role) => {
+const internalAttack = async (role,idToken) => {
   const newRoleInput = document.getElementById("newRole");
   
   if (!role || role === ''){
