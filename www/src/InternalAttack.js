@@ -1,8 +1,8 @@
 import config from './config';
-import React, { useState, useEffect } from 'react';
-import { Container, Jumbotron, Row, Col, Button, Form, FormGroup,Label,Input } from 'reactstrap';
+import React from 'react';
+import { Row, Col, Button, Form, FormGroup,Label,Input } from 'reactstrap';
 import axios from 'axios';
-import setSuccess from './App';
+
 
 const clearCredentials = () => {
   window.location.href = config.redirect_url;
